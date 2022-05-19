@@ -1,0 +1,12 @@
+一个Flask+BooStrap编写的小项目 (author:liucheng, time:20220519)
+1、前端主要使用的是bootstrap js类库：
+a) static里主要放置图片和静态css样式文件；
+b) templates里主要防止html文件模板，一般有一个base.html基类html文件，里面在<head></head>中引用bootstrap css样式，
+在<body></body>中引用js文件。在<title></title>和<body></body>中分别写入{% block body%}{% endblock %}用于子类模板html继承；
+c) 在base.html<head></head>中引用自己编写的style.css样式；
+d) 写一个新的home.html用于前段界面，开头用{% extends 'base.html' %}继承base.html，然后分别在{% block body%}{% endblock %}塞入前端代码；
+2、后端主要是app.py
+a) python文件，里面建了一个idols类数据模型，然后写了增删改查后端函数，注意所有的函数都必须要有返回值;
+b) 后端获取前端数据主要通过request.form.get()获取，然后传递给后端函数处理；
+c) 前段获取后端数据主要从数据库中获取，通过 idols.query.get()获取；
+d) 数据库用的是sqlite3，需要先创建idols table,可以手工创建也可以利用idols.db.py文件创建；
